@@ -63,7 +63,7 @@ task install(type: Exec, dependsOn: assemble) {
   executable = 'mvn'
   args = [
       "install:install-file",
-      "-DgroupId=com.jakewharton.hugo",
+      "-DgroupId=com.shazam.hugo",
       "-DartifactId=hugo-runtime",
       "-Dversion=${version}",
       "-Dpackaging=aar",
