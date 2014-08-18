@@ -43,15 +43,14 @@ public class Hugo {
   public Object logAndExecute(ProceedingJoinPoint joinPoint, Trace trace) throws Throwable {
     CodeSignature codeSignature = (CodeSignature) joinPoint.getSignature();
     Class<? extends TraceReporter> traceReporterClass = trace.value();
-    TraceReporter listener = traceReporterClass.newInstance();
+    TraceReporter reporter = traceReporterClass.newInstance();
 
     long startNanos = System.nanoTime();
     Object result = joinPoint.proceed();
 
     long stopNanos = System.nanoTime();
     long lengthMillis = TimeUnit.NANOSECONDS.toMillis(stopNanos - startNanos);
-    listener.onMethodCompleted(codeSignature.getDeclaringTypeName(), lengthMillis);
-    System.out.println(lengthMillis);
+    reporter.onMethodCompleted(codeSignature.getDeclaringTypeName(), lengthMillis);
 
     return result;
 }
