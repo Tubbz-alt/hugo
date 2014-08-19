@@ -26,7 +26,7 @@ class HugoPlugin implements Plugin<Project> {
     }
 
     project.dependencies {
-      debugCompile 'com.shazam.hugo:hugo-runtime:1.1.1-SNAPSHOT'
+      debugCompile 'com.shazam.hugo:hugo-runtime:1.1.1-SNAPSHOT@aar'
       // TODO this should come transitively
       debugCompile 'org.aspectj:aspectjrt:1.8.1'
       compile 'com.shazam.hugo:hugo-annotations:1.1.1-SNAPSHOT'

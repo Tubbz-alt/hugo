@@ -6,6 +6,7 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.widget.TextView;
 import hugo.weaving.DebugLog;
+import hugo.weaving.Trace;
 
 public class HugoActivity extends Activity {
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class HugoActivity extends Activity {
   }
 
   @DebugLog
+  @Trace(LogReporter.class)
   private int fibonacci(int number) {
     if (number <= 0) {
       throw new IllegalArgumentException("Number must be greater than zero.");

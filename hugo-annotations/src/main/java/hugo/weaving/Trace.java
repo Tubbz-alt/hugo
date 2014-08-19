@@ -10,7 +10,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 /**
  * Annotation that will be used for reporting the trace of a method.
  */
-@Target({METHOD, CONSTRUCTOR}) @Retention(RUNTIME)
+@Target({METHOD, CONSTRUCTOR})
+@Retention(RUNTIME)
 public @interface Trace {
 
     /**
