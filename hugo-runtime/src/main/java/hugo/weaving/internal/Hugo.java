@@ -39,7 +39,7 @@ public class Hugo {
     return result;
   }
 
-  @Around("@annotation(trace)")
+  @Around("execution(* *(..)) && @annotation(trace)")
   public Object logAndExecute(ProceedingJoinPoint joinPoint, Trace trace) throws Throwable {
     Signature codeSignature = joinPoint.getSignature();
     Class<? extends TraceReporter> traceReporterClass = trace.value();
@@ -50,7 +50,7 @@ public class Hugo {
 
     long stopNanos = System.nanoTime();
     long lengthMillis = TimeUnit.NANOSECONDS.toMillis(stopNanos - startNanos);
-    reporter.onMethodCompleted(codeSignature, lengthMillis);
+    reporter.onMethodCompleted(codeSignature.toLongString(), lengthMillis);
 
     return result;
 }
